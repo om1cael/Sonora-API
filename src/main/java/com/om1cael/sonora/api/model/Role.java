@@ -9,7 +9,6 @@ import java.util.Collection;
 @Getter
 @Setter
 @Entity
-@Table(name = "roles")
 public class Role {
 
     @Id

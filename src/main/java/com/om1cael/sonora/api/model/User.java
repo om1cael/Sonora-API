@@ -31,6 +31,7 @@ public class User implements UserDetails {
     private String password;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToMany
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(
