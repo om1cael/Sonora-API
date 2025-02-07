@@ -1,7 +1,9 @@
 package com.om1cael.sonora.api.utils;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.Verification;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +25,14 @@ public class JwtUtils {
                 .withIssuedAt(Instant.now())
                 .withExpiresAt(Instant.now().plusSeconds(HOURS_IN_SECONDS * 24))
                 .sign(getAlgorithm());
+    }
+
+    public String getSubject(String token) {
+        JWTVerifier verification = JWT.require(getAlgorithm())
+                .withIssuer(issuer)
+                .build();
+
+        return verification.verify(token).getSubject();
     }
 
     private Algorithm getAlgorithm() {
