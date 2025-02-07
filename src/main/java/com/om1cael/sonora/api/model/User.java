@@ -1,5 +1,6 @@
 package com.om1cael.sonora.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
@@ -30,7 +31,7 @@ public class User implements UserDetails {
     @Size(min = 8, max = 64)
     private String password;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "user_roles",
