@@ -2,6 +2,7 @@ package com.om1cael.sonora.api.service;
 
 import com.om1cael.sonora.api.model.User;
 import com.om1cael.sonora.api.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
