@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/user/music")
@@ -29,6 +30,12 @@ public class MusicController {
         }
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    private ResponseEntity<List<Music>> getAll() {
+        List<Music> musics = this.musicService.getAll();
+        return ResponseEntity.ok(musics);
     }
 
     @GetMapping(value = "/{id}")

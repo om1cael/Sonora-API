@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class MusicService {
@@ -33,5 +34,9 @@ public class MusicService {
     public Music get(Long id) {
         return this.musicRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Music not found"));
+    }
+
+    public List<Music> getAll() {
+        return this.musicRepository.findAll();
     }
 }
