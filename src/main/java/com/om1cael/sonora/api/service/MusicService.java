@@ -3,6 +3,7 @@ package com.om1cael.sonora.api.service;
 import com.om1cael.sonora.api.model.Music;
 import com.om1cael.sonora.api.model.User;
 import com.om1cael.sonora.api.repository.MusicRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,10 @@ public class MusicService {
         music.setAudio(audio.getBytes());
         musicRepository.save(music);
         return true;
+    }
+
+    public Music get(Long id) {
+        return this.musicRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Music not found"));
     }
 }
