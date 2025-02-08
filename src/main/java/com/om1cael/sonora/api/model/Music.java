@@ -14,7 +14,6 @@ public class Music {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonIgnore
     private Long id;
 
     private String name;
